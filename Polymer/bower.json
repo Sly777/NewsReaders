@@ -1,0 +1,15 @@
+{
+  "name": "Polymer",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Sly777/NewsReaders",
+  "authors": [
+    "İlker Güller <ilker.guller.777@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "polymer": "~0.2.1",
+    "polymer-ajax": "Polymer/polymer-ajax#~0.2.1",
+    "polymer-jsonp": "polymer/polymer-jsonp#~0.2.1"
+  }
+}
