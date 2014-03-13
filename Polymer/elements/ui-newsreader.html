@@ -19,7 +19,7 @@ Description: This plugin can create news reader system with Url only
                     <img src='../img/loading.GIF' class='loadingImg' width='48' height='48' alt='Loading' />
                 </template>
                 <ul>
-                    <template repeat="{{news in newsList.value.items | filter:$index<11}}">
+                    <template repeat="{{news in newsList.value.items}}">
                         <li><a href='{{news.link}}' on-click="showDetails">{{news.title}}</a></li>
                     </template>
                 </ul>
