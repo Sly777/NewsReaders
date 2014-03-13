@@ -1,0 +1,57 @@
+html, body {
+    font-family: 'ubuntu';
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #a9a9a9 url(../img/background_by_ScarlethWhite.jpg) no-repeat left top;
+    background-size: cover;
+}
+
+.headline {
+    margin-top: 40px;
+    background: rgba(1,1,1,0.1);
+    border-bottom: 1px solid rgba(1,1,1,0.1);
+}
+
+.headline h1 {
+    color: rgba(56, 56, 56, 0.8)
+    font-weight: bold;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.pageContain {
+    background-color: rgba(255,255,255,0.7);
+}
+
+.pageContain span {
+    color: darkred;
+    font-weight: bold;
+}
+
+footer {
+    text-align: right;
+    margin-top: 50px;
+    font-size: 10px;
+}
+
+footer a {
+    color: #ffffff;
+}
+
+footer a:hover {
+    background-color: #ffffff;
+    color: dodgerblue;
+}
+
+.ribbon {
+    position: absolute;
+    top: -1px;
+    right: 0;
+}

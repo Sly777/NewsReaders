@@ -1,0 +1,24 @@
+/** UI-NewsReader Settings */
+/** Clearfix Class */
+.cf, .ui-newsreader, .ui-newsreader .ui-newsreader-details, .ui-newsreader .ui-newsreader-details .details, .ui-newsreader .ui-newsreader-details .smallmenu { *zoom: 1; }
+.cf:before, .ui-newsreader:before, .ui-newsreader .ui-newsreader-details:before, .ui-newsreader .ui-newsreader-details .details:before, .ui-newsreader .ui-newsreader-details .smallmenu:before, .cf:after, .ui-newsreader:after, .ui-newsreader .ui-newsreader-details:after, .ui-newsreader .ui-newsreader-details .details:after, .ui-newsreader .ui-newsreader-details .smallmenu:after { content: " "; /* 1 */ display: table; /* 2 */ }
+.cf:after, .ui-newsreader:after, .ui-newsreader .ui-newsreader-details:after, .ui-newsreader .ui-newsreader-details .details:after, .ui-newsreader .ui-newsreader-details .smallmenu:after { clear: both; }
+
+/** UI-NewsReader Styles */
+.ui-newsreader { width: 500px; height: auto; background-color: white; box-shadow: 0 2px 3px #b6b3ac; border: 1px solid #b6b3ac; padding: 10px; font-family: "Ubuntu", sans-serif; font-size: 12px; overflow-x: auto; overflow-y: hidden; }
+.ui-newsreader .loadingImg { display: block; margin: 0 auto; }
+.ui-newsreader .ui-newsreader-list { position: relative; }
+.ui-newsreader .ui-newsreader-list h3 { margin: 0 0 10px 0; color: #b6b3ac; font-weight: 400; font-size: 14px; }
+.ui-newsreader .ui-newsreader-list ul { margin: 0; padding: 0; list-style: none; }
+.ui-newsreader .ui-newsreader-list ul li { margin-bottom: 5px; }
+.ui-newsreader .ui-newsreader-list ul li a { color: #1f2022; text-decoration: none; display: block; padding: 5px 10px; background-color: #f0f0f0; }
+.ui-newsreader .ui-newsreader-list ul li a:hover { background-color: #fe8321; color: white; }
+.ui-newsreader .ui-newsreader-details { position: relative; }
+.ui-newsreader .ui-newsreader-details h3 { margin: 0 0 10px 0; color: #b6b3ac; font-weight: 400; font-size: 14px; }
+.ui-newsreader .ui-newsreader-details .details img { float: left; max-width: 130px; margin-right: 20px; }
+.ui-newsreader .ui-newsreader-details .details p { color: #1f2022; margin: 0 0 10px 0; display: block; height: 80px; overflow: auto; }
+.ui-newsreader .ui-newsreader-details .smallmenu { margin-top: 5px; }
+.ui-newsreader .ui-newsreader-details .smallmenu a { display: block; bottom: 0; background-color: #f0f0f0; color: #43464a; padding: 5px 10px; box-sizing: border-box; -moz-box-sizing: border-box; text-decoration: none; width: 49%; }
+.ui-newsreader .ui-newsreader-details .smallmenu a:nth-child(1) { float: left; text-align: left; }
+.ui-newsreader .ui-newsreader-details .smallmenu a:nth-child(2) { float: right; text-align: right; }
+.ui-newsreader .ui-newsreader-details .smallmenu a:hover { background-color: #fe8321; color: white; }

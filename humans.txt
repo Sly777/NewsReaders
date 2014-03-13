@@ -1,0 +1,11 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    İlker Güller - http://ilkerguller.com - @the_bluescreen
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, Web Components, Polymer
+    Normalize.css, jQuery, Modernizr, BackboneJS, UnderscoreJS, Polymer, AngularJS

@@ -1,0 +1,154 @@
+<!--
+UI News Reader - Polymer Web Component
+version:1.0.0
+
+Author : Ilker Guller (http://ilkerguller.com)
+Description: This plugin can create news reader system with Url only
+-->
+
+<link rel="import" href="polymer-jsonp.html">
+
+<polymer-element name="ui-newsreader" constructor="uiNewsReader" attributes="url requireImages changeUrlPath changeTitle">
+    <template>
+        <link rel="stylesheet" href="../css/ui-newsreader.css">
+        <div class="ui-newsreader">
+            <template if="{{ !newsDetail.isRendered }}">
+            <div class="ui-newsreader-list">
+                <h3>LATEST NEWS</h3>
+                <template if="{{ !isDataLoaded }}">
+                    <img src='../img/loading.GIF' class='loadingImg' width='48' height='48' alt='Loading' />
+                </template>
+                <ul>
+                    <template repeat="{{news in newsList.value.items | filter:$index<11}}">
+                        <li><a href='{{news.link}}' on-click="showDetails">{{news.title}}</a></li>
+                    </template>
+                </ul>
+            </div>
+            </template>
+            <template if="{{ newsDetail.isRendered }}">
+                <div class="ui-newsreader-details">
+                    <h3>{{newsDetail.title}}</h3>
+                    <div class="details">
+                        <img src='{{newsDetail.image.url}}' width='{{newsDetail.image.width}}' height='{{newsDetail.image.height}}' />
+                        <p>{{newsDetail.description}}</p>
+                    </div>
+                    <div class="smallmenu">
+                        <a class="backtoNews" href="#" on-click="clearDetails">< Back</a>
+                        <a class="readMore" target="_blank" href="{{newsDetail.link}}">Read More ></a>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <polymer-jsonp auto url="{{url}}" response="{{newsList}}"></polymer-jsonp>
+    </template>
+    <script>
+        Polymer('ui-newsreader', {
+            isDataLoaded: false,
+            requireImages: true,
+            changeUrlPath: true,
+            changeTitle: true,
+            newsList: [],
+            newsDetail: {
+                isRendered: false,
+                title: "",
+                link: "",
+                description: "",
+                image: {
+                    url: "",
+                    height: "",
+                    width: ""
+                }
+            },
+            created: function() {
+                this.filter();
+                if(this.url == "") {
+                    console.error("UI News Reader :: Please set URL");
+                    return false;
+                }
+            },
+            filter: function() {
+                if (!Array.prototype.filter) {
+                    Array.prototype.filter = function(fun /*, thisp*/) {
+                        'use strict';
+
+                        if (!this) {
+                            throw new TypeError();
+                        }
+
+                        var objects = Object(this);
+                        var len = objects.length >>> 0;
+                        if (typeof fun !== 'function') {
+                            throw new TypeError();
+                        }
+
+                        var res = [];
+                        var thisp = arguments[1];
+                        for (var i in objects) {
+                            if (objects.hasOwnProperty(i)) {
+                                if (fun.call(thisp, objects[i], i, objects)) {
+                                    res.push(objects[i]);
+                                }
+                            }
+                        }
+
+                        return res;
+                    };
+                }
+            },
+            newsListChanged: function() {
+                var self = this;
+                var items = this.newsList.value.items.filter(function(item, total) {
+                    return total <= 30 && (self.requireImages ? item["media:thumbnail"] || item["media:content"] : true) && (item["description"]);
+                });
+                this.newsList.value.items = (items.length > 10) ? items.slice(0, 10) : items;
+                this.isDataLoaded = true;
+            },
+            getImage: function(model) {
+                if(model["media:thumbnail"]) {
+                    return {
+                        url: model['media:thumbnail'].url,
+                        width: model['media:thumbnail'].width,
+                        height: model['media:thumbnail'].height
+                    };
+                } else if(model["media:content"]) {
+                    return {
+                        url: model['media:content'].url,
+                        width: model['media:content'].width,
+                        height: model['media:content'].height
+                    };
+                }
+
+                return {};
+            },
+            getDescription: function(html) {
+                var regex = /(<([^>]+)>)/ig
+                        ,body = html
+                        ,result = body.replace(regex, "");
+
+                return result.replace(/[&]nbsp[;]/gi, " ");
+            },
+            showDetails: function(event, detail, sender) {
+                event.preventDefault();
+                var _mdl = sender.bindings.href.model.news;
+
+                if(this.changeUrlPath) window.location.hash = "/" + encodeURIComponent(_mdl.title).replace(/%20/g,'+');
+                if(this.changeTitle) document.title = "Latest News :: " + _mdl.title;
+
+                this.newsDetail.title = _mdl.title;
+                this.newsDetail.link = _mdl.link;
+                this.newsDetail.description = this.getDescription(_mdl.description);
+                this.newsDetail.image = this.getImage(_mdl);
+
+                this.newsDetail.isRendered = true;
+            },
+            clearDetails: function(event) {
+                event.preventDefault();
+                if(this.changeUrlPath) window.location.hash = "";
+                if(this.changeTitle) document.title = "UI News Reader - Polymer Web Component by İlker Güller";
+
+                this.newsDetail.isRendered = false;
+            }
+        });
+    </script>
+</polymer-element>

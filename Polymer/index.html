@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>UI News Reader - Polymer Web Component</title>
+  <meta name="description" content="UI News Reader - Polymer Web Component">
+  <meta name="author" content="Ilker Guller">
+  <meta name="keyword" content="polymer,web component,javascript,plugin,newsreader,ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../Assets/css/normalize.css">
+  <link rel="stylesheet" href="../Assets/css/main.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:400,700">
+
+  <script src="../Assets/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src="../Assets/js/vendor/polymer-v0.0.20131010/polymer.min.js"></script>
+
+  <link rel="import" href="elements/ui-newsreader.html">
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<ui-newsreader
+    url="http://pipes.yahoo.com/pipes/pipe.run?_id=DqsF_ZG72xGLbes9l7okhQ&_render=json&_callback="></ui-newsreader>
+
+<div class="compIntroduction">
+  <h3>UI News Reader - Polymer Web Component</h3>
+  <h4>Info</h4>
+
+  <p>
+    "UI News Reader" is web component that gets news from rss urls and shows in page easily. It requires <a
+      href="http://www.polymer-project.org/" target="_blank">Polymer Framework</a> and url that must response data in
+    RSS JSON format.<br><br>It's created by <a href="http://www.ilkerguller.com/" target="_blank">İlker Güller</a>.
+  </p>
+  <h4>Attributes</h4>
+
+  <p>
+  <ul>
+    <li><b>url</b> <i>Required</i> (string) : JSONP Url where component get data response from</li>
+    <li><b>requireImages</b> <i>Optional</i> (boolean) : Set true to get news that doesnt has image</li>
+    <li><b>changeUrlPath</b> <i>Optional</i> (boolean) : Set true to change page url with encoded news title
+      automatically
+    </li>
+    <li><b>changeTitle</b> <i>Optional</i> (boolean) : Set true to change page title with news title automatically</li>
+  </ul>
+  </p>
+  <h4>SASS Attributes</h4>
+
+  <p>
+  <ul>
+    <li><b>$componentWidth</b> : Component Width</li>
+    <li><b>$componentHeight</b> : Component Height</li>
+    <li><b>$colorWhite</b> : White Hex Color</li>
+    <li><b>$colorWhiteSmoke</b> : White Smoke Hex Color</li>
+    <li><b>$colorGray</b> : Gray Hex Color</li>
+    <li><b>$colorBlackText</b> : Black Hex Color for Texts</li>
+    <li><b>$colorOrangeHover</b> : Orange Hex Color for hover effects</li>
+    <li><b>$fontUbuntu</b> : Ubuntu Font Family</li>
+    <li><b>$sizeBig</b> : Text Size</li>
+    <li><b>$sizeNormal</b> : Text Size</li>
+    <li><b>$sizeSmall</b> : Text Size</li>
+  </ul>
+  </p>
+  <h4>Example</h4>
+  <h5>Basic</h5>
+  <code>
+    &lt;ui-newsreader url=&quot;<b>http://pipes.yahoo.com/pipes/pipe.run?_id=DqsF_ZG72xGLbes9l7okhQ&amp;_render=json&amp;_callback=</b>&quot;&gt;&lt;/ui-newsreader&gt;
+  </code>
+
+  <h5>With Attributes</h5>
+  <code>
+    &lt;ui-newsreader url=&quot;<b>http://pipes.yahoo.com/pipes/pipe.run?_id=DqsF_ZG72xGLbes9l7okhQ&amp;_render=json&amp;_callback=</b>&quot;
+    <b>requireImages=&quot;false&quot;</b> <b>changeUrlPath=&quot;false&quot;</b> <b>changeTitle=&quot;true&quot;</b>
+    &gt;&lt;/ui-newsreader&gt;
+  </code>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../Assets/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<div class="ui-newsreader">
+  <div class="ui-newsreader-list" ng-show="!isRendered">
+    <h3>LATEST NEWS</h3>
+
+    <img ng-show="!isLoaded" src='img/loading.GIF' class='loadingImg' width='48' height='48' alt='Loading' />
+    <ul>
+      <li ng-repeat="news in newsList | filter"><a href='{{news.link}}' ng-click="showDetails(news, $event)">{{news.title}}</a></li>
+    </ul>
+  </div>
+
+  <div class="ui-newsreader-details" ng-show="isRendered">
+    <h3>{{newsDetail.title}}</h3>
+    <div class="details">
+      <img src='{{newsDetail.image.url}}' width='{{newsDetail.image.width}}' height='{{newsDetail.image.height}}' />
+      <p>{{newsDetail.description}}</p>
+    </div>
+    <div class="smallmenu">
+      <a class="backtoNews" ng-click="isRendered = false">< Back</a>
+      <a class="readMore" target="_blank" href="{{newsDetail.link}}">Read More ></a>
+    </div>
+  </div>
+</div>
