@@ -6,11 +6,12 @@ Author : Ilker Guller (http://ilkerguller.com)
 Description: This plugin can create news reader system with Url only
 -->
 
-<link rel="import" href="polymer-jsonp.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer-jsonp/polymer-jsonp.html">
 
 <polymer-element name="ui-newsreader" constructor="uiNewsReader" attributes="url requireImages changeUrlPath changeTitle">
     <template>
-        <link rel="stylesheet" href="../css/ui-newsreader.css">
+        <link rel="stylesheet" href="../../Assets/css/ui-newsreader.css">
         <div class="ui-newsreader">
             <template if="{{ !newsDetail.isRendered }}">
             <div class="ui-newsreader-list">
@@ -20,7 +21,7 @@ Description: This plugin can create news reader system with Url only
                 </template>
                 <ul>
                     <template repeat="{{news in newsList.value.items}}">
-                        <li><a href='{{news.link}}' on-click="showDetails">{{news.title}}</a></li>
+                        <li><a href='{{news.link}}' on-click="{{showDetails}}">{{news.title}}</a></li>
                     </template>
                 </ul>
             </div>
@@ -33,7 +34,7 @@ Description: This plugin can create news reader system with Url only
                         <p>{{newsDetail.description}}</p>
                     </div>
                     <div class="smallmenu">
-                        <a class="backtoNews" href="#" on-click="clearDetails">< Back</a>
+                        <a class="backtoNews" href="#" on-click="{{clearDetails}}">< Back</a>
                         <a class="readMore" target="_blank" href="{{newsDetail.link}}">Read More ></a>
                     </div>
                 </div>
@@ -130,7 +131,7 @@ Description: This plugin can create news reader system with Url only
             },
             showDetails: function(event, detail, sender) {
                 event.preventDefault();
-                var _mdl = sender.bindings.href.model.news;
+                var _mdl = sender.bindings.href.object_.news;
 
                 if(this.changeUrlPath) window.location.hash = "/" + encodeURIComponent(_mdl.title).replace(/%20/g,'+');
                 if(this.changeTitle) document.title = "Latest News :: " + _mdl.title;
